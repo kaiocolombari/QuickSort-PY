@@ -1,0 +1,54 @@
+
+ALGORITMO QUICK_SORT(V, INICIO, FIM)
+
+    ENQUANTO INICIO < FIM FAÇA
+
+        MEIO ← (INICIO + FIM) DIV 2
+
+        TROCAR V[MEIO] COM V[FIM]
+        PIVO ← V[FIM]
+
+        LIMITE ← INICIO - 1
+
+        PARA ATUAL DE INICIO ATÉ FIM - 1 FAÇA
+
+            ITERACOES ← ITERACOES + 1
+
+            SE V[ATUAL] <= PIVO ENTÃO
+
+                LIMITE ← LIMITE + 1
+
+                SE LIMITE != ATUAL ENTÃO
+                    TROCAR V[LIMITE] COM V[ATUAL]
+                    TROCAS ← TROCAS + 1
+                FIM SE
+
+            FIM SE
+
+        FIM PARA
+
+        POSICAO ← LIMITE + 1
+
+        SE POSICAO != FIM ENTÃO
+            TROCAR V[POSICAO] COM V[FIM]
+            TROCAS ← TROCAS + 1
+        FIM SE
+
+        TAM_ESQUERDA ← POSICAO - INICIO
+        TAM_DIREITA ← FIM - POSICAO
+
+        SE TAM_ESQUERDA < TAM_DIREITA ENTÃO
+
+            QUICK_SORT(V, INICIO, POSICAO - 1)
+            INICIO ← POSICAO + 1
+
+        SENÃO
+
+            QUICK_SORT(V, POSICAO + 1, FIM)
+            FIM ← POSICAO - 1
+
+        FIM SE
+
+    FIM ENQUANTO
+
+FIM ALGORITMO

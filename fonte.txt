@@ -1,0 +1,11 @@
+http://geeksforgeeks.org/dsa/python-program-for-quicksort/
+https://www.w3schools.com/Python/python_dsa_quicksort.asp
+https://www.datacamp.com/pt/tutorial/recursion-in-python
+https://www.w3schools.com/python/python_recursion.asp
+https://www.ime.usp.br/~pf/analise_de_algoritmos/aulas/quick.html
+https://stackoverflow.com/questions/12454866/how-to-optimize-quicksort
+https://www.geeksforgeeks.org/dsa/quick-sort-algorithm/
+https://coddy.tech/visualize/sorting/quick-sort
+Video:Quick Sort Explained Visually | Pivot, Partition, and Recursion
+https://link.springer.com/chapter/10.1007/978-981-15-6648-6_26
+https://www.geeksforgeeks.org/python/understanding-python-dataclasses/
