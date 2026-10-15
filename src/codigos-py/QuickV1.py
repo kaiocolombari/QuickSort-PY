@@ -1,8 +1,6 @@
 import random
 import time
-from functools import lru_cache
 
-@lru_cache(maxsize=3)
 def partition(lista, menor, maior):
     pivo = lista[maior]
     i = menor - 1
