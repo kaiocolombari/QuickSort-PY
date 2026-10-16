@@ -54,38 +54,24 @@ def quick_sort(vetor, inicio, fim, estatisticas, profundidade=1):
     """
     estatisticas.chamadas_recursivas += 1
 
-    estatisticas.profundidade_maxima = max(
-        estatisticas.profundidade_maxima,
+    estatisticas.profundidade_max = max(
+        estatisticas.profundidade_max,
         profundidade
     )
 
     while inicio < fim:
-        pivo = particionar(
-            vetor, inicio, fim, estatisticas
-        )
+        pivo = particionar(vetor, inicio, fim, estatisticas)
 
         tamanho_esquerda = pivo - inicio
         tamanho_direita = fim - pivo
 
         if tamanho_esquerda < tamanho_direita:
-            quick_sort(
-                vetor,
-                inicio,
-                pivo - 1,
-                estatisticas,
-                profundidade + 1
-            )
+            quick_sort(vetor, inicio, pivo - 1, estatisticas, profundidade + 1)
 
             inicio = pivo + 1
 
         else:
-            quick_sort(
-                vetor,
-                pivo + 1,
-                fim,
-                estatisticas,
-                profundidade + 1
-            )
+            quick_sort(vetor, pivo + 1, fim, estatisticas, profundidade + 1)
 
             fim = pivo - 1
 
@@ -169,7 +155,7 @@ def executar_caso(nome, original):
         f"{estatisticas.chamadas_recursivas}"
     )
     print(f"Partições: {estatisticas.particoes}")
-    print(f"Profundidade máxima: {estatisticas.profundidade_maxima}")
+    print(f"Profundidade máxima: {estatisticas.profundidade_max}")
     print(f"Tempo: {fim - inicio:.6f} segundos")
     print(f"Ordenação correta: {verificar_ordenacao(vetor)}")
 
@@ -205,6 +191,7 @@ def main():
     for nome, vetor in casos:
         estatisticas, tempo = executar_caso(nome, vetor)
         resultados.append((nome, estatisticas, tempo))
+        input('Pressione Enter para continuar...')
 
     print("\n" + "=" * 70)
     print("RESUMO FINAL")
