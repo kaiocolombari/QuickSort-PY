@@ -113,16 +113,14 @@ def casos_test():
         ("Caso 005 - Decrescente trocado", decrescente_trocado),
     ]
 
-def casos_range(min, max):
-    """Gera casos de teste com vetores de tamanho variável."""
-    casos = []
-    
-    for tamanho in range(min, max + 1):
-        aleatorio = list(range(1, tamanho + 1))
-        random.shuffle(aleatorio)
-        casos.append((f"Caso Aleatório - Tamanho {tamanho}", aleatorio))
-        
-    return casos
+def casos_range(tamanho):
+    """Gera um único caso aleatório com tamanho variável."""
+    aleatorio = list(range(1, tamanho + 1))
+    random.shuffle(aleatorio)
+
+    return [
+        (f"Caso Aleatório - Tamanho {tamanho}", aleatorio)
+    ]
 
 
 def executar_caso(nome, original):
@@ -172,18 +170,13 @@ def main():
     ).strip().upper()
     
     if escolha == "2":
-        min_tamanho = int(input("Digite o tamanho mínimo do vetor: "))
-        max_tamanho = int(input("Digite o tamanho máximo do vetor: "))
+        vetor_tamanho = int(input("Digite o tamanho do vetor: "))
         
-        if min_tamanho < 1:
+        if vetor_tamanho < 1:
                 print("O tamanho mínimo deve ser pelo menos 1.")
                 return
-
-        if max_tamanho < min_tamanho:
-            print("O máximo deve ser maior ou igual ao mínimo.")
-            return
-        
-        casos = casos_range(min_tamanho, max_tamanho)
+            
+        casos = casos_range(vetor_tamanho)
         
     else:
         casos = casos_test()
@@ -191,7 +184,7 @@ def main():
     for nome, vetor in casos:
         estatisticas, tempo = executar_caso(nome, vetor)
         resultados.append((nome, estatisticas, tempo))
-        input('Pressione Enter para continuar...')
+        input('Enter para continuar...')
 
     print("\n" + "=" * 70)
     print("RESUMO FINAL")
@@ -210,6 +203,19 @@ def main():
             f"{estatisticas.trocas:>10}"
             f"{tempo:>13.6f}"
         )
+        with open("resultados_quick_v2.txt", "a") as arquivo:
+            arquivo.write(
+                f"{'Caso':<32}"
+                f"{'Iterações':>12}"
+                f"{'Trocas':>10}"
+                f"{'Tempo (s)':>13}\n"
+            )
+            arquivo.write(
+                f"{nome:<32}"
+                f"{estatisticas.iteracoes:>12}"
+                f"{estatisticas.trocas:>10}"
+                f"{tempo:>13.6f}\n"
+            )
 
 
 if __name__ == "__main__":
