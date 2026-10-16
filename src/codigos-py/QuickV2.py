@@ -162,7 +162,7 @@ def executar_caso(nome, original):
 
 def main():
     resultados = []
-    print("[1] Quick Sort - Casos fornecidos pelo professor")
+    print("[1] Quick Sort - Casos vetor 5000 elementos ")
     print("[2] Quick Sort - Personalizar casos de teste")
     
     escolha = input(
