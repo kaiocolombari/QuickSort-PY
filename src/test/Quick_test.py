@@ -1,14 +1,14 @@
 import sys
 
-def quick_sort_simples(vetor, inicio, fim):
+def quick_sort(vetor, inicio, fim):
     if inicio < fim:
-        pivo = particionar_simples(vetor, inicio, fim)
+        pivo = particionar(vetor, inicio, fim)
 
-        quick_sort_simples(vetor, inicio, pivo - 1)
-        quick_sort_simples(vetor, pivo + 1, fim)
+        quick_sort(vetor, inicio, pivo - 1)
+        quick_sort(vetor, pivo + 1, fim)
 
 
-def particionar_simples(vetor, inicio, fim):
+def particionar(vetor, inicio, fim):
     pivo = vetor[fim]
     limite = inicio - 1
 
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     vetor = list(range(2000))
 
     try:
-        quick_sort_simples(vetor, 0, len(vetor) - 1)
+        quick_sort(vetor, 0, len(vetor) - 1)
         print("Ordenação concluída!")
     except RecursionError:
         print("ERRO: limite de recursão excedido!")
