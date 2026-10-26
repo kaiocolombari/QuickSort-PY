@@ -166,10 +166,10 @@ def main():
     print("[2] Quick Sort - Personalizar casos de teste")
     
     escolha = input(
-        "Escolha uma opção (01 ou 02): "
+        "Escolha uma opção (default: 1): "
     ).strip().upper()
     
-    if escolha == "2":
+    if escolha == "2" or escolha == "02":
         vetor_tamanho = int(input("Digite o tamanho do vetor: "))
         
         if vetor_tamanho < 1:
@@ -203,7 +203,7 @@ def main():
             f"{estatisticas.trocas:>10}"
             f"{tempo:>13.6f}"
         )
-        with open("resultados_quick_v2.txt", "a") as arquivo:
+        with open(f"resultados_{nome.replace(' ', '_')}.txt", "a", encoding="utf-8") as arquivo:
             arquivo.write(
                 f"{'Caso':<32}"
                 f"{'Iterações':>12}"

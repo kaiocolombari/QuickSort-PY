@@ -9,3 +9,4 @@ https://coddy.tech/visualize/sorting/quick-sort
 Video:Quick Sort Explained Visually | Pivot, Partition, and Recursion
 https://link.springer.com/chapter/10.1007/978-981-15-6648-6_26
 https://www.geeksforgeeks.org/python/understanding-python-dataclasses/
+https://afteracademy.com/article/quick-sort
