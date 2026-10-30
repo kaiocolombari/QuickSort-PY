@@ -142,6 +142,8 @@ def executar_caso(nome, original):
 
     fim = perf_counter()
 
+    ordenado = verificar_ordenacao(vetor)
+
     print("\nVetor depois da ordenação:")
     print(vetor)
 
@@ -155,9 +157,9 @@ def executar_caso(nome, original):
     print(f"Partições: {estatisticas.particoes}")
     print(f"Profundidade máxima: {estatisticas.profundidade_max}")
     print(f"Tempo: {fim - inicio:.6f} segundos")
-    print(f"Ordenação correta: {verificar_ordenacao(vetor)}")
+    print(f"Ordenação correta: {ordenado}")
 
-    return estatisticas, fim - inicio
+    return estatisticas, fim - inicio, ordenado
 
 
 def main():
@@ -182,8 +184,8 @@ def main():
         casos = casos_test()
 
     for nome, vetor in casos:
-        estatisticas, tempo = executar_caso(nome, vetor)
-        resultados.append((nome, estatisticas, tempo))
+        estatisticas, tempo, ordenado = executar_caso(nome, vetor)
+        resultados.append((nome, estatisticas, tempo, ordenado))
         input('Enter para continuar...')
 
     print("\n" + "=" * 70)
@@ -194,29 +196,34 @@ def main():
         f"{'Iterações':>12}"
         f"{'Trocas':>10}"
         f"{'Tempo (s)':>13}"
+        f"{'Ordenado':>10}"
     )
 
-    for nome, estatisticas, tempo in resultados:
+    for nome, estatisticas, tempo, ordenado in resultados:
         print(
             f"{nome:<32}"
             f"{estatisticas.iteracoes:>12}"
             f"{estatisticas.trocas:>10}"
             f"{tempo:>13.6f}"
-        )
+            f"{str(ordenado):>10}"
+            )
+
         with open(f"resultados_{nome.replace(' ', '_')}.txt", "a", encoding="utf-8") as arquivo:
             arquivo.write(
                 f"{'Caso':<32}"
                 f"{'Iterações':>12}"
                 f"{'Trocas':>10}"
-                f"{'Tempo (s)':>13}\n"
-            )
+                f"{'Tempo (s)':>13}"
+                f"{'Ordenado':>10}\n"
+                )
+
             arquivo.write(
                 f"{nome:<32}"
                 f"{estatisticas.iteracoes:>12}"
                 f"{estatisticas.trocas:>10}"
-                f"{tempo:>13.6f}\n"
-            )
-
+                f"{tempo:>13.6f}"
+                f"{str(ordenado):>10}\n"
+                )
 
 if __name__ == "__main__":
     main()
